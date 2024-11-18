@@ -11,7 +11,5 @@ object AppConstants {
     const val PUBLISHERS_ENDPOINT = "publishers"
     const val STARTING_PAGE_INDEX = 1
     const val PAGE_SIZE = 20
-    const val UNEXPECTED_ERROR_MESSAGE = "Something went wrong. Please try again"
-    const val NO_INTERNET_ERROR_MESSAGE = "Please check your network connection"
     const val GAME_DETAILS_ARGUMENT_KEY = "id"
 }

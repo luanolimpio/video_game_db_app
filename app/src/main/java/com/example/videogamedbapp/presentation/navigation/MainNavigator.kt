@@ -24,17 +24,15 @@ import com.example.videogamedbapp.presentation.components.BackTopAppBar
 import com.example.videogamedbapp.presentation.components.CustomNavigationDrawer
 import com.example.videogamedbapp.presentation.components.MenuTopAppBar
 import com.example.videogamedbapp.presentation.components.NavigationItem
-import com.example.videogamedbapp.presentation.screens.games.list.AllGamesViewModel
-import com.example.videogamedbapp.presentation.screens.games.list.BestGamesOfTheYearViewModel
 import com.example.videogamedbapp.presentation.screens.games.list.GamesScreen
-import com.example.videogamedbapp.presentation.screens.games.list.RecentGamesViewModel
 import com.example.videogamedbapp.presentation.screens.games.details.GameDetailsScreen
 import com.example.videogamedbapp.presentation.screens.games.details.GameDetailsViewModel
-import com.example.videogamedbapp.presentation.screens.games.search.SearchScreen
-import com.example.videogamedbapp.presentation.screens.games.search.SearchViewModel
+import com.example.videogamedbapp.presentation.screens.search.SearchScreen
+import com.example.videogamedbapp.presentation.screens.search.SearchViewModel
 import com.example.videogamedbapp.presentation.screens.categories.CategoriesScreen
 import com.example.videogamedbapp.presentation.screens.categories.CategoryGamesViewModel
 import com.example.videogamedbapp.presentation.screens.categories.CategoriesViewModel
+import com.example.videogamedbapp.presentation.screens.games.list.GamesViewModel
 
 @Composable
 fun MainNavigator() {
@@ -86,8 +84,8 @@ fun MainNavigator() {
             startDestination = Routes.AllGames,
         ) {
             composable<Routes.AllGames> {
-                val viewModel = hiltViewModel<AllGamesViewModel>()
-                val games = viewModel.games.collectAsLazyPagingItems()
+                val viewModel = hiltViewModel<GamesViewModel>()
+                val games = viewModel.allGames.collectAsLazyPagingItems()
                 GamesScreen(
                     topBar = {
                         MenuTopAppBar(
@@ -101,9 +99,10 @@ fun MainNavigator() {
                     }
                 )
             }
+
             composable<Routes.RecentGames> {
-                val viewModel = hiltViewModel<RecentGamesViewModel>()
-                val games = viewModel.games.collectAsLazyPagingItems()
+                val viewModel = hiltViewModel<GamesViewModel>()
+                val games = viewModel.recentGames.collectAsLazyPagingItems()
                 GamesScreen(
                     topBar = {
                         MenuTopAppBar(
@@ -118,9 +117,10 @@ fun MainNavigator() {
                 )
 
             }
+
             composable<Routes.BestGamesOfTheYear> {
-                val viewModel = hiltViewModel<BestGamesOfTheYearViewModel>()
-                val games = viewModel.games.collectAsLazyPagingItems()
+                val viewModel = hiltViewModel<GamesViewModel>()
+                val games = viewModel.bestGames.collectAsLazyPagingItems()
                 GamesScreen(
                     topBar = {
                         MenuTopAppBar(

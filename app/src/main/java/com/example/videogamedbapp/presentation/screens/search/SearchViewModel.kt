@@ -1,4 +1,4 @@
-package com.example.videogamedbapp.presentation.screens.games.search
+package com.example.videogamedbapp.presentation.screens.search
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope

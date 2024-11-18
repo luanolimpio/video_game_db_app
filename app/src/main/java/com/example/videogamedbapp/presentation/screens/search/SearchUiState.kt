@@ -1,4 +1,4 @@
-package com.example.videogamedbapp.presentation.screens.games.search
+package com.example.videogamedbapp.presentation.screens.search
 
 import androidx.paging.PagingData
 import com.example.videogamedbapp.domain.models.Game

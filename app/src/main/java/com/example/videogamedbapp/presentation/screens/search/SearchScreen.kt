@@ -1,4 +1,4 @@
-package com.example.videogamedbapp.presentation.screens.games.search
+package com.example.videogamedbapp.presentation.screens.search
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -85,41 +85,16 @@ fun SearchScreen(
                     }
                 }
             )
-//            GameList(
-//                modifier = Modifier.padding(paddingValues),
-//                games = it.collectAsLazyPagingItems(),
-//                onItemClick = onNavigateToDetails
-//            )
         }
     }
-//    Column(
-//        modifier = Modifier.fillMaxSize()
-//    ) {
-//        SearchTextField(
-//            modifier = Modifier.padding(top = 8.dp, start = 8.dp, end = 8.dp),
-//            value = state.query,
-//            onValueChange = { onEvent(SearchEvent.QueryChanged(it)) },
-//            onSearch = { onEvent(SearchEvent.SearchNews) }
-//        )
-//        state.articles?.let {
-//            ArticleList(
-//                articles = it.collectAsLazyPagingItems(),
-//                onItemClick = onNavigateToDetails
-//            )
-//        }
-//    }
 }
 
 @Composable
-fun SearchTopAppBar(
+private fun SearchTopAppBar(
     value: String,
     onValueChange: (String) -> Unit,
-//    onCloseClicked: () -> Unit,
     onSearch: () -> Unit,
     drawerState: DrawerState
-
-//    onSearch: (String) -> Unit
-
 ) {
     val focusRequester = remember { FocusRequester() }
     val focusManager = LocalFocusManager.current
@@ -168,12 +143,6 @@ fun SearchTopAppBar(
                             contentDescription = null
                         )
                     }
-//                Icon(
-////                    modifier = Modifier
-////                        .alpha(ContentAlpha.medium),
-//                    imageVector = Icons.Default.Search,
-//                    contentDescription = null
-//                )
                 },
                 trailingIcon = {
                     IconButton(onClick = { onValueChange("") }, enabled = value.isNotEmpty()) {

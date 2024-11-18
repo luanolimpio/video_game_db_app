@@ -68,11 +68,8 @@ data class GameDetailsDto(
     val additionsCount: Int,
     @SerializedName("game_series_count")
     val gameSeriesCount: Int,
-//    val user_game: Any,
-//    val user_review: Any,
     @SerializedName("reviews_count")
     val reviewsCount: Int,
-//    val promo: String,
     @SerializedName("saturated_color")
     val saturatedColor: String,
     @SerializedName("dominant_color")
