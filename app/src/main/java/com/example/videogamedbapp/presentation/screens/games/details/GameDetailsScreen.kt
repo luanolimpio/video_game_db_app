@@ -105,31 +105,39 @@ private fun Details(game: GameDetails) {
                 .height(256.dp)
                 .fillMaxWidth(),
         ) {
-            SubcomposeAsyncImage(
-                modifier = Modifier.fillMaxSize(),
-                model = ImageRequest.Builder(LocalContext.current)
-                    .data(game.backgroundImage)
-                    .crossfade(true).build(),
-                contentScale = ContentScale.Crop,
-                contentDescription = null,
-                colorFilter = ColorFilter.tint(
-                    Color.Gray.copy(0.7f),
-                    BlendMode.Modulate
-                ),
-                loading = {
-                    ShimmerEffect(
-                        modifier = Modifier
-                            .fillMaxSize()
-                            .background(Color.LightGray)
-                    )
-                },
-                error = {
-                    Icon(
-                        painter = painterResource(R.drawable.ic_broken_image),
-                        contentDescription = null
-                    )
-                },
-            )
+            if (game.backgroundImage != null) {
+                SubcomposeAsyncImage(
+                    modifier = Modifier.fillMaxSize(),
+                    model = ImageRequest.Builder(LocalContext.current)
+                        .data(game.backgroundImage)
+                        .crossfade(true).build(),
+                    contentScale = ContentScale.Crop,
+                    contentDescription = null,
+                    colorFilter = ColorFilter.tint(
+                        Color.Gray.copy(0.7f),
+                        BlendMode.Modulate
+                    ),
+                    loading = {
+                        ShimmerEffect(
+                            modifier = Modifier
+                                .fillMaxSize()
+                                .background(Color.LightGray)
+                        )
+                    },
+                    error = {
+                        Icon(
+                            painter = painterResource(R.drawable.ic_broken_image),
+                            contentDescription = null
+                        )
+                    },
+                )
+            } else {
+                Box(
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .background(Color.Gray.copy(0.7f))
+                )
+            }
             Column(
                 modifier = Modifier
                     .fillMaxWidth()

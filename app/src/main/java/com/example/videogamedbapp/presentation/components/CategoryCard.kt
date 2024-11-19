@@ -53,6 +53,7 @@ fun CategoryCard(
     ) {
         Box(contentAlignment = Alignment.Center) {
             SubcomposeAsyncImage(
+                modifier = Modifier.fillMaxSize(),
                 model = ImageRequest.Builder(LocalContext.current)
                     .data(category.backgroundImage)
                     .size(Size.ORIGINAL)

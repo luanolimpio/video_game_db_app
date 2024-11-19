@@ -9,7 +9,7 @@ data class GameDetails(
     val description: String,
     val metacritic: Int?,
     val released: String?,
-    val backgroundImage: String,
+    val backgroundImage: String?,
     val website: String,
     val ratings: List<Rating>,
     val playtime: Int,
