@@ -3,9 +3,7 @@ package com.example.videogamedbapp.presentation.components
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.isSystemInDarkTheme
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -17,7 +15,6 @@ import androidx.compose.material3.ElevatedCard
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
@@ -68,6 +65,8 @@ fun GameCard(
                 },
                 error = {
                     Icon(
+                        modifier = Modifier
+                            .fillMaxSize(),
                         painter = painterResource(R.drawable.ic_broken_image),
                         contentDescription = null
                     )
@@ -76,28 +75,19 @@ fun GameCard(
             Column(
                 modifier = Modifier.padding(8.dp),
             ) {
-                Row(
-                    modifier = Modifier.fillMaxWidth(),
-                    verticalAlignment = Alignment.CenterVertically,
-                    horizontalArrangement = Arrangement.spacedBy(4.dp)
-                ) {
-                    game.parentPlatformIcons.forEach { item ->
-                        item?.let {
-                            Icon(
-                                tint = if (isSystemInDarkTheme()) Color.LightGray else Color.DarkGray,
-                                painter = painterResource(it),
-                                contentDescription = null
+                PlatformIcons(
+                    parentPlatformIcons = game.parentPlatformIcons,
+                    color = if (isSystemInDarkTheme()) Color.LightGray else Color.DarkGray,
+                    spacing = 4.dp,
+                    additionalContent = {
+                        game.metacritic?.let {
+                            MetaScore(
+                                score = it,
+                                modifier = modifier.size(24.dp)
                             )
                         }
-                    }
-                    Spacer(modifier = Modifier.weight(1f))
-                    game.metacritic?.let {
-                        MetaScore(
-                            score = it,
-                            modifier = modifier.size(24.dp)
-                        )
-                    }
-                }
+                    },
+                )
                 Spacer(modifier = Modifier.height(8.dp))
                 Text(
                     text = game.name,

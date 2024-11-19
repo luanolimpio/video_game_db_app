@@ -7,7 +7,6 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ExperimentalLayoutApi
 import androidx.compose.foundation.layout.FlowRow
-import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -21,7 +20,6 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.BlendMode
@@ -47,7 +45,9 @@ import com.example.videogamedbapp.presentation.components.ShimmerEffect
 import com.example.videogamedbapp.presentation.components.BackTopAppBar
 import com.example.videogamedbapp.presentation.components.ErrorState
 import com.example.videogamedbapp.presentation.components.MetaScore
+import com.example.videogamedbapp.presentation.components.PlatformIcons
 import com.example.videogamedbapp.presentation.components.Rating
+import com.example.videogamedbapp.ui.theme.Grey10
 import com.example.videogamedbapp.ui.theme.Shapes
 
 @Composable
@@ -171,29 +171,19 @@ private fun Details(game: GameDetails) {
                             text = game.released,
                             style = TextStyle(
                                 fontSize = 16.sp,
+                                color = Grey10,
                                 fontWeight = FontWeight.SemiBold
                             )
                         )
                     }
                 }
                 Spacer(modifier = Modifier.height(8.dp))
-                Row(
-                    modifier = Modifier.fillMaxWidth(),
-                    verticalAlignment = Alignment.CenterVertically,
-                    horizontalArrangement = Arrangement.spacedBy(8.dp)
-                ) {
-                    game.parentPlatformIcons.forEach { item ->
-                        item?.let {
-                            Icon(
-                                modifier = Modifier
-                                    .size(24.dp),
-                                tint = Color.White,
-                                painter = painterResource(it),
-                                contentDescription = null
-                            )
-                        }
-                    }
-                }
+                PlatformIcons(
+                    parentPlatformIcons = game.parentPlatformIcons,
+                    color = Color.White,
+                    spacing = 8.dp,
+                    modifier = Modifier.size(24.dp)
+                )
                 Spacer(modifier = Modifier.height(8.dp))
                 FlowRow(
                     modifier = Modifier.fillMaxWidth(),
@@ -210,11 +200,13 @@ private fun Details(game: GameDetails) {
             modifier = Modifier.padding(8.dp),
             verticalArrangement = Arrangement.spacedBy(4.dp)
         ) {
-            Text(
-                text = stringResource(R.string.about),
-                style = MaterialTheme.typography.titleMedium
-            )
-            Text(text = game.description)
+            if (game.description.isNotEmpty()) {
+                Text(
+                    text = stringResource(R.string.about),
+                    style = MaterialTheme.typography.titleMedium
+                )
+                Text(text = game.description)
+            }
             Text(
                 text = stringResource(R.string.platforms),
                 style = MaterialTheme.typography.titleMedium
@@ -241,11 +233,13 @@ private fun Details(game: GameDetails) {
                 text = stringResource(R.string.publisher),
                 style = MaterialTheme.typography.titleMedium
             )
-            Text(text = game.publishers.joinToString())
-            Text(
-                text = stringResource(R.string.age_rating),
-                style = MaterialTheme.typography.titleMedium
-            )
+            if (game.publishers.isNotEmpty()) {
+                Text(text = game.publishers.joinToString())
+                Text(
+                    text = stringResource(R.string.age_rating),
+                    style = MaterialTheme.typography.titleMedium
+                )
+            }
             Text(
                 text = game.ageRating
                     ?: stringResource(id = R.string.not_rated),
@@ -258,7 +252,6 @@ private fun Details(game: GameDetails) {
                 Text(
                     modifier = Modifier.clickable { uriHandler.openUri(game.website) },
                     text = game.website,
-                    color = Color.Blue,
                     textDecoration = TextDecoration.Underline,
                 )
             }

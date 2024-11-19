@@ -12,6 +12,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.Send
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material.icons.filled.Star
@@ -188,7 +189,7 @@ private fun CustomNavigationDrawerPreview() {
             NavigationItem(
                 title = stringResource(R.string.publishers),
                 route = Routes.BestGamesOfTheYear,
-                icon = Icons.Default.Home,
+                icon = Icons.AutoMirrored.Filled.Send,
             ),
         ),
         drawerState = rememberDrawerState(initialValue = DrawerValue.Open),

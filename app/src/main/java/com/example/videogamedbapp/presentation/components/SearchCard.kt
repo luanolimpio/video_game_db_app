@@ -62,6 +62,8 @@ fun SearchCard(
             },
             error = {
                 Icon(
+                    modifier = Modifier
+                        .fillMaxSize(),
                     painter = painterResource(R.drawable.ic_broken_image),
                     contentDescription = null
                 )
@@ -69,21 +71,11 @@ fun SearchCard(
         )
         Spacer(modifier = Modifier.width(8.dp))
         Column(verticalArrangement = Arrangement.spacedBy(4.dp)) {
-            Row(
-                modifier = Modifier.fillMaxWidth(),
-                verticalAlignment = Alignment.CenterVertically,
-                horizontalArrangement = Arrangement.spacedBy(4.dp)
-            ) {
-                game.parentPlatformIcons.forEach { item ->
-                    item?.let {
-                        Icon(
-                            tint = if (isSystemInDarkTheme()) Color.LightGray else Color.DarkGray,
-                            painter = painterResource(it),
-                            contentDescription = null
-                        )
-                    }
-                }
-            }
+            PlatformIcons(
+                parentPlatformIcons = game.parentPlatformIcons,
+                color = if (isSystemInDarkTheme()) Color.LightGray else Color.DarkGray,
+                spacing = 4.dp,
+            )
             Text(
                 text = game.name,
                 maxLines = 1,

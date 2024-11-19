@@ -1,6 +1,7 @@
 package com.example.videogamedbapp.presentation.navigation
 
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.Send
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material.icons.filled.Star
@@ -73,7 +74,7 @@ fun MainNavigator() {
             NavigationItem(
                 title = stringResource(R.string.publishers),
                 route = Routes.Publishers,
-                icon = Icons.Default.Home,
+                icon = Icons.AutoMirrored.Filled.Send,
             ),
         ),
         navController = navController,
@@ -115,7 +116,6 @@ fun MainNavigator() {
                         navController.navigate(Routes.GameDetails(game.id))
                     }
                 )
-
             }
 
             composable<Routes.BestGamesOfTheYear> {

@@ -9,7 +9,7 @@ data class GameDto(
     val released: String,
     val tba: Boolean,
     @SerializedName("background_image")
-    val backgroundImage: String,
+    val backgroundImage: String?,
     val rating: Double,
     @SerializedName("rating_top")
     val ratingTop: Int,
@@ -35,7 +35,7 @@ data class GameDto(
     @SerializedName("parent_platforms")
     val parentPlatforms: List<ParentPlatform>,
     val genres: List<Genre>,
-    val stores: List<Store>,
+    val stores: List<Store>?,
     val tags: List<Tag>,
     @SerializedName("esrb_rating")
     val esrbRating: EsrbRating,
