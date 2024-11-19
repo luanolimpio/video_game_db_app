@@ -18,6 +18,10 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.videogamedbapp.data.remote.dtos.Rating
 import com.example.videogamedbapp.ui.theme.Shapes
+import com.example.videogamedbapp.ui.theme.metacriticGreen
+import com.example.videogamedbapp.ui.theme.metacriticRed
+import com.example.videogamedbapp.ui.theme.metacriticYellow
+import com.example.videogamedbapp.ui.theme.ratingBlue
 
 @Composable
 fun Rating(rating: Rating) {
@@ -45,10 +49,10 @@ fun Rating(rating: Rating) {
 
 private fun getColorByRatingId(id: Int): Color {
     return when (id) {
-        1 -> Color(0xfff83644)
-        3 -> Color(0xfff9a33f)
-        4 -> Color(0xff567ce1)
-        5 -> Color(0xff82c53c)
+        1 -> metacriticRed
+        3 -> metacriticYellow
+        4 -> ratingBlue
+        5 -> metacriticGreen
         else -> Color.DarkGray
     }
 }

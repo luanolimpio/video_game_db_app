@@ -11,7 +11,11 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
+import com.example.videogamedbapp.ui.theme.Grey10
 import com.example.videogamedbapp.ui.theme.Shapes
+import com.example.videogamedbapp.ui.theme.metacriticGreen
+import com.example.videogamedbapp.ui.theme.metacriticRed
+import com.example.videogamedbapp.ui.theme.metacriticYellow
 
 @Composable
 fun MetaScore(score: Int, modifier: Modifier = Modifier) {
@@ -26,7 +30,7 @@ fun MetaScore(score: Int, modifier: Modifier = Modifier) {
             modifier = Modifier.align(Alignment.Center),
             text = "$score",
             style = TextStyle(
-                color = if (color == Color.Red) Color.White else Color.Unspecified,
+                color = if (color == metacriticRed) Color.White else Grey10,
                 fontWeight = FontWeight.Bold
             )
         )
@@ -35,9 +39,9 @@ fun MetaScore(score: Int, modifier: Modifier = Modifier) {
 
 private fun getColorByScore(score: Int): Color {
     return when (score) {
-        in 75..100 -> Color.Green
-        in 50..74 -> Color.Yellow
-        else -> Color.Red
+        in 75..100 -> metacriticGreen
+        in 50..74 -> metacriticYellow
+        else -> metacriticRed
     }
 }
 
