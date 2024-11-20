@@ -15,6 +15,8 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
@@ -42,11 +44,12 @@ import com.example.videogamedbapp.R
 import com.example.videogamedbapp.domain.models.GameDetails
 import com.example.videogamedbapp.presentation.components.GameDetailsShimmer
 import com.example.videogamedbapp.presentation.components.ShimmerEffect
-import com.example.videogamedbapp.presentation.components.BackTopAppBar
+import com.example.videogamedbapp.presentation.components.CustomTopAppBar
 import com.example.videogamedbapp.presentation.components.ErrorState
 import com.example.videogamedbapp.presentation.components.MetaScore
 import com.example.videogamedbapp.presentation.components.PlatformIcons
 import com.example.videogamedbapp.presentation.components.Rating
+import com.example.videogamedbapp.presentation.components.TopAppBarIcon
 import com.example.videogamedbapp.ui.theme.Grey10
 import com.example.videogamedbapp.ui.theme.Shapes
 
@@ -58,9 +61,12 @@ fun GameDetailsScreen(
 ) {
     Scaffold(
         topBar = {
-            BackTopAppBar(
+            CustomTopAppBar(
                 title = stringResource(R.string.details),
-                onNavigateBack = onNavigateBack
+                navigationIcon = TopAppBarIcon(
+                    icon = Icons.AutoMirrored.Default.ArrowBack,
+                    onClick = onNavigateBack
+                )
             )
         }
     ) { innerPadding ->

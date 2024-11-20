@@ -1,14 +1,17 @@
 package com.example.videogamedbapp.presentation.navigation
 
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.automirrored.filled.Send
 import androidx.compose.material.icons.filled.Home
+import androidx.compose.material.icons.filled.Menu
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material.icons.filled.Star
 import androidx.compose.material3.DrawerValue
 import androidx.compose.material3.rememberDrawerState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.res.stringResource
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
@@ -21,10 +24,10 @@ import com.example.videogamedbapp.R
 import com.example.videogamedbapp.core.routes.CustomNavType.Companion.getCustomNavTypeMap
 import com.example.videogamedbapp.core.routes.Routes
 import com.example.videogamedbapp.domain.models.GameQueries
-import com.example.videogamedbapp.presentation.components.BackTopAppBar
 import com.example.videogamedbapp.presentation.components.CustomNavigationDrawer
-import com.example.videogamedbapp.presentation.components.MenuTopAppBar
+import com.example.videogamedbapp.presentation.components.CustomTopAppBar
 import com.example.videogamedbapp.presentation.components.NavigationItem
+import com.example.videogamedbapp.presentation.components.TopAppBarIcon
 import com.example.videogamedbapp.presentation.screens.games.list.GamesScreen
 import com.example.videogamedbapp.presentation.screens.games.details.GameDetailsScreen
 import com.example.videogamedbapp.presentation.screens.games.details.GameDetailsViewModel
@@ -34,6 +37,7 @@ import com.example.videogamedbapp.presentation.screens.categories.CategoriesScre
 import com.example.videogamedbapp.presentation.screens.categories.CategoryGamesViewModel
 import com.example.videogamedbapp.presentation.screens.categories.CategoriesViewModel
 import com.example.videogamedbapp.presentation.screens.games.list.GamesViewModel
+import kotlinx.coroutines.launch
 
 @Composable
 fun MainNavigator() {
@@ -41,11 +45,6 @@ fun MainNavigator() {
     val drawerState = rememberDrawerState(initialValue = DrawerValue.Closed)
     CustomNavigationDrawer(
         items = listOf(
-            NavigationItem(
-                title = stringResource(R.string.search),
-                route = Routes.Search,
-                icon = Icons.Default.Search,
-            ),
             NavigationItem(
                 title = stringResource(R.string.all_games),
                 route = Routes.AllGames,
@@ -87,11 +86,27 @@ fun MainNavigator() {
             composable<Routes.AllGames> {
                 val viewModel = hiltViewModel<GamesViewModel>()
                 val games = viewModel.allGames.collectAsLazyPagingItems()
+                val scope = rememberCoroutineScope()
                 GamesScreen(
                     topBar = {
-                        MenuTopAppBar(
+                        CustomTopAppBar(
                             title = stringResource(R.string.all_games),
-                            drawerState = drawerState,
+                            navigationIcon = TopAppBarIcon(
+                                icon = Icons.Default.Menu,
+                                onClick = {
+                                    scope.launch {
+                                        drawerState.open()
+                                    }
+                                },
+                            ),
+                            actions = listOf(
+                                TopAppBarIcon(
+                                    icon = Icons.Default.Search,
+                                    onClick = {
+                                        navController.navigate(Routes.Search)
+                                    }
+                                )
+                            )
                         )
                     },
                     games = games,
@@ -104,11 +119,19 @@ fun MainNavigator() {
             composable<Routes.RecentGames> {
                 val viewModel = hiltViewModel<GamesViewModel>()
                 val games = viewModel.recentGames.collectAsLazyPagingItems()
+                val scope = rememberCoroutineScope()
                 GamesScreen(
                     topBar = {
-                        MenuTopAppBar(
+                        CustomTopAppBar(
                             title = stringResource(R.string.new_releases),
-                            drawerState = drawerState,
+                            navigationIcon = TopAppBarIcon(
+                                icon = Icons.Default.Menu,
+                                onClick = {
+                                    scope.launch {
+                                        drawerState.open()
+                                    }
+                                },
+                            ),
                         )
                     },
                     games = games,
@@ -121,11 +144,19 @@ fun MainNavigator() {
             composable<Routes.BestGamesOfTheYear> {
                 val viewModel = hiltViewModel<GamesViewModel>()
                 val games = viewModel.bestGames.collectAsLazyPagingItems()
+                val scope = rememberCoroutineScope()
                 GamesScreen(
                     topBar = {
-                        MenuTopAppBar(
+                        CustomTopAppBar(
                             title = stringResource(R.string.best_of_the_year),
-                            drawerState = drawerState,
+                            navigationIcon = TopAppBarIcon(
+                                icon = Icons.Default.Menu,
+                                onClick = {
+                                    scope.launch {
+                                        drawerState.open()
+                                    }
+                                },
+                            ),
                         )
                     },
                     games = games,
@@ -140,11 +171,11 @@ fun MainNavigator() {
                 val uiState by viewModel.uiState.collectAsStateWithLifecycle()
                 SearchScreen(
                     state = uiState,
-                    drawerState = drawerState,
                     onEvent = viewModel::onEvent,
                     onNavigateToDetails = { game ->
                         navController.navigate(Routes.GameDetails(game.id))
                     },
+                    onNavigateBack = { navController.popBackStack() },
                 )
             }
 
@@ -222,9 +253,12 @@ fun MainNavigator() {
                 val games = viewModel.getGamesByQueries(params.queries).collectAsLazyPagingItems()
                 GamesScreen(
                     topBar = {
-                        BackTopAppBar(
+                        CustomTopAppBar(
                             title = params.title,
-                            onNavigateBack = { navController.popBackStack() }
+                            navigationIcon = TopAppBarIcon(
+                                icon = Icons.AutoMirrored.Default.ArrowBack,
+                                onClick = { navController.popBackStack() }
+                            )
                         )
                     },
                     games = games,

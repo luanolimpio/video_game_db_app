@@ -26,14 +26,17 @@ import androidx.compose.ui.unit.dp
 import com.example.videogamedbapp.R
 
 @Composable
-fun EmptyState(onRefresh: () -> Unit) {
-    val scrollState = rememberScrollState()
-    PullToRefreshContainer(onRefresh = onRefresh) {
+fun EmptyState(
+    title: String? = null,
+    description: String? = null,
+    onRefresh: (() -> Unit)? = null
+) {
+    val content = @Composable {
         Column(
             modifier = Modifier
                 .fillMaxSize()
                 .padding(8.dp)
-                .verticalScroll(scrollState),
+                .verticalScroll(rememberScrollState()),
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
@@ -44,18 +47,26 @@ fun EmptyState(onRefresh: () -> Unit) {
                 contentDescription = null
             )
             Text(
-                text = stringResource(R.string.no_results_found),
+                text = title ?: stringResource(R.string.no_results_found),
                 style = MaterialTheme.typography.titleLarge,
                 textAlign = TextAlign.Center
             )
             Spacer(modifier = Modifier.height(4.dp))
             Text(
-                text = stringResource(R.string.adjust_your_search_or_try_again_later),
+                text = description
+                    ?: stringResource(R.string.adjust_your_search_or_try_again_later),
                 style = MaterialTheme.typography.bodyMedium,
                 textAlign = TextAlign.Center,
                 color = if (isSystemInDarkTheme()) LightGray else DarkGray,
             )
         }
+    }
+    if (onRefresh != null) {
+        PullToRefreshContainer(onRefresh = onRefresh) {
+            content()
+        }
+    } else {
+        content()
     }
 }
 

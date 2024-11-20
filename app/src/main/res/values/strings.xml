@@ -4,12 +4,13 @@
     <string name="all_games">All Games</string>
     <string name="new_releases">New Releases</string>
     <string name="best_of_the_year">Best of the year</string>
-    <string name="browse">Browse</string>
     <string name="genres">Genres</string>
     <string name="publishers">Publishers</string>
     <string name="published_by">Published by</string>
     <string name="search">Search</string>
-    <string name="search_for_games">Search for Games</string>
+    <string name="type_a_game_name">Type a game name</string>
+    <string name="looking_for_a_game">Looking for a game?</string>
+    <string name="start_by_typing_its_name">Start by typing its name in the search field above!</string>
     <string name="thousands_of_games">Thousands of games, genres, and publishers to discover.</string>
     <string name="start_exploring_now">Start exploring now!</string>
     <string name="no_results_found">No results found</string>
