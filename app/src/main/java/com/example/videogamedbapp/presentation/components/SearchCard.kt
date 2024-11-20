@@ -57,7 +57,7 @@ fun SearchCard(
                 ShimmerEffect(
                     modifier = Modifier
                         .fillMaxSize()
-                        .background(Color.LightGray)
+                        .background(if (isSystemInDarkTheme()) Color.Gray else Color.LightGray)
                 )
             },
             error = {

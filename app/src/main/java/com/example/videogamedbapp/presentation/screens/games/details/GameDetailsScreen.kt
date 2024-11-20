@@ -2,6 +2,7 @@ package com.example.videogamedbapp.presentation.screens.games.details
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -127,7 +128,7 @@ private fun Details(game: GameDetails) {
                         ShimmerEffect(
                             modifier = Modifier
                                 .fillMaxSize()
-                                .background(Color.LightGray)
+                                .background(if (isSystemInDarkTheme()) Color.Gray else Color.LightGray)
                         )
                     },
                     error = {

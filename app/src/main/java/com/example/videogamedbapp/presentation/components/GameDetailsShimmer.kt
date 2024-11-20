@@ -1,6 +1,7 @@
 package com.example.videogamedbapp.presentation.components
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -25,7 +26,7 @@ fun GameDetailsShimmer() {
             modifier = Modifier
                 .fillMaxWidth()
                 .height(256.dp)
-                .background(Color.LightGray)
+                .background(if (isSystemInDarkTheme()) Color.Gray else Color.LightGray)
         )
         Column(
             modifier = Modifier.padding(8.dp),
@@ -37,7 +38,7 @@ fun GameDetailsShimmer() {
                         .width(150.dp)
                         .height(20.dp)
                         .clip(Shapes.small)
-                        .background(Color.LightGray)
+                        .background(if (isSystemInDarkTheme()) Color.Gray else Color.LightGray)
                 )
                 ShimmerEffect(
                     modifier = Modifier

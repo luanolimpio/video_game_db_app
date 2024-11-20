@@ -2,6 +2,7 @@ package com.example.videogamedbapp.presentation.components
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -68,7 +69,7 @@ fun CategoryCard(
                     ShimmerEffect(
                         modifier = Modifier
                             .fillMaxSize()
-                            .background(Color.LightGray)
+                            .background(if (isSystemInDarkTheme()) Color.Gray else Color.LightGray)
                     )
                 },
                 error = {

@@ -1,6 +1,7 @@
 package com.example.videogamedbapp.presentation.components
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -19,7 +20,7 @@ fun VerticalGridShimmer(modifier: Modifier = Modifier) {
                 .fillMaxWidth()
                 .height(190.dp)
                 .clip(Shapes.small)
-                .background(Color.LightGray)
+                .background(if (isSystemInDarkTheme()) Color.Gray else Color.LightGray)
         )
     }
 }

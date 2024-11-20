@@ -1,6 +1,7 @@
 package com.example.videogamedbapp.presentation.components
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -26,7 +27,7 @@ fun ListShimmer(modifier: Modifier = Modifier) {
                     .fillMaxWidth()
                     .height(64.dp)
                     .clip(Shapes.small)
-                    .background(Color.LightGray)
+                    .background(if (isSystemInDarkTheme()) Color.Gray else Color.LightGray)
             )
         }
     }
