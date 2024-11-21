@@ -5,6 +5,7 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -27,7 +28,6 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.SubcomposeAsyncImage
 import coil.request.ImageRequest
-import coil.size.Size
 import com.example.videogamedbapp.R
 import com.example.videogamedbapp.domain.models.Game
 import com.example.videogamedbapp.ui.theme.Shapes
@@ -41,6 +41,7 @@ fun GameCard(
     ElevatedCard(
         modifier = modifier
             .fillMaxWidth()
+            .height(190.dp)
             .clickable { onClick() },
         elevation = CardDefaults.cardElevation(
             defaultElevation = 6.dp
@@ -49,10 +50,9 @@ fun GameCard(
     ) {
         Column {
             SubcomposeAsyncImage(
-                modifier = Modifier.height(128.dp),
+                modifier = Modifier.fillMaxHeight(0.65f),
                 model = ImageRequest.Builder(LocalContext.current)
                     .data(game.backgroundImage)
-                    .size(Size.ORIGINAL)
                     .crossfade(true).build(),
                 contentScale = ContentScale.Crop,
                 contentDescription = null,
