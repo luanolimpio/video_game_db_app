@@ -14,7 +14,7 @@ import com.example.videogamedbapp.data.remote.mappers.toGame
 import com.example.videogamedbapp.data.remote.mappers.toGameDetails
 import com.example.videogamedbapp.data.remote.sources.BestGamesOfTheYearPagingSource
 import com.example.videogamedbapp.data.remote.sources.GamesPagingSource
-import com.example.videogamedbapp.data.remote.sources.PlatformsPagingSource
+import com.example.videogamedbapp.data.remote.sources.CategoriesPagingSource
 import com.example.videogamedbapp.data.remote.sources.RecentGamesPagingSource
 import com.example.videogamedbapp.domain.models.Game
 import com.example.videogamedbapp.domain.models.GameDetails
@@ -75,7 +75,7 @@ class RAWGRepositoryImpl @Inject constructor(
         return Pager(
             config = PagingConfig(pageSize = AppConstants.PAGE_SIZE),
             pagingSourceFactory = {
-                PlatformsPagingSource(
+                CategoriesPagingSource(
                     apiService = apiService,
                     categoryType = type
                 )

@@ -2,11 +2,8 @@ package com.example.videogamedbapp.presentation.navigation
 
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
-import androidx.compose.material.icons.automirrored.filled.Send
-import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.Menu
 import androidx.compose.material.icons.filled.Search
-import androidx.compose.material.icons.filled.Star
 import androidx.compose.material3.DrawerValue
 import androidx.compose.material3.rememberDrawerState
 import androidx.compose.runtime.Composable
@@ -47,33 +44,27 @@ fun MainNavigator() {
         items = listOf(
             NavigationItem(
                 title = stringResource(R.string.all_games),
-                route = Routes.AllGames,
-                icon = Icons.Default.Home,
+                route = Routes.AllGames
             ),
             NavigationItem(
                 title = stringResource(R.string.new_releases),
-                route = Routes.RecentGames,
-                icon = Icons.Default.Star,
+                route = Routes.RecentGames
             ),
             NavigationItem(
                 title = stringResource(R.string.best_of_the_year),
-                route = Routes.BestGamesOfTheYear,
-                icon = Icons.Default.Home,
+                route = Routes.BestGamesOfTheYear
             ),
             NavigationItem(
                 title = stringResource(R.string.platforms),
-                route = Routes.Platforms,
-                icon = Icons.Default.Home,
+                route = Routes.Platforms
             ),
             NavigationItem(
                 title = stringResource(R.string.genres),
-                route = Routes.Genres,
-                icon = Icons.Default.Home,
+                route = Routes.Genres
             ),
             NavigationItem(
                 title = stringResource(R.string.publishers),
-                route = Routes.Publishers,
-                icon = Icons.AutoMirrored.Filled.Send,
+                route = Routes.Publishers
             ),
         ),
         navController = navController,

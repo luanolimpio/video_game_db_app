@@ -7,7 +7,7 @@ import com.example.videogamedbapp.core.enums.CategoryTypeEnum
 import com.example.videogamedbapp.data.remote.RAWGApiService
 import com.example.videogamedbapp.data.remote.dtos.CategoryDto
 
-class PlatformsPagingSource(
+class CategoriesPagingSource(
     private val apiService: RAWGApiService,
     private val categoryType: CategoryTypeEnum
 ) :

@@ -26,7 +26,6 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import coil.compose.SubcomposeAsyncImage
 import coil.request.ImageRequest
-import coil.size.Size
 import com.example.videogamedbapp.R
 import com.example.videogamedbapp.domain.models.Game
 import com.example.videogamedbapp.ui.theme.Shapes
@@ -49,7 +48,6 @@ fun SearchCard(
                 .clip(Shapes.small),
             model = ImageRequest.Builder(LocalContext.current)
                 .data(game.backgroundImage)
-                .size(Size.ORIGINAL)
                 .crossfade(true).build(),
             contentScale = ContentScale.Crop,
             contentDescription = null,

@@ -14,7 +14,6 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.Send
 import androidx.compose.material.icons.filled.Home
-import androidx.compose.material.icons.filled.Search
 import androidx.compose.material.icons.filled.Star
 import androidx.compose.material3.DrawerState
 import androidx.compose.material3.DrawerValue
@@ -53,7 +52,6 @@ import kotlinx.coroutines.launch
 
 data class NavigationItem(
     val title: String,
-    val icon: ImageVector,
     val route: Routes
 )
 
@@ -126,12 +124,6 @@ private fun DrawerBody(
             NavigationDrawerItem(
                 selected = backStackEntry?.destination.hasCurrentRoute(item.route::class),
                 label = { Text(text = item.title) },
-                icon = {
-                    Icon(
-                        imageVector = item.icon,
-                        contentDescription = item.title
-                    )
-                },
                 onClick = {
                     navController.navigate(item.route) {
                         popUpTo(navController.graph.startDestinationId) {
@@ -157,39 +149,28 @@ private fun CustomNavigationDrawerPreview() {
     CustomNavigationDrawer(
         items = listOf(
             NavigationItem(
-                title = stringResource(R.string.search),
-                route = Routes.Search,
-                icon = Icons.Default.Search,
-            ),
-            NavigationItem(
                 title = stringResource(R.string.all_games),
-                route = Routes.AllGames,
-                icon = Icons.Default.Home,
+                route = Routes.AllGames
             ),
             NavigationItem(
                 title = stringResource(R.string.new_releases),
-                route = Routes.RecentGames,
-                icon = Icons.Default.Star,
+                route = Routes.RecentGames
             ),
             NavigationItem(
                 title = stringResource(R.string.best_of_the_year),
-                route = Routes.BestGamesOfTheYear,
-                icon = Icons.Default.Home,
+                route = Routes.BestGamesOfTheYear
             ),
             NavigationItem(
                 title = stringResource(R.string.platforms),
-                route = Routes.AllGames,
-                icon = Icons.Default.Home,
+                route = Routes.AllGames
             ),
             NavigationItem(
                 title = stringResource(R.string.genres),
-                route = Routes.RecentGames,
-                icon = Icons.Default.Home,
+                route = Routes.RecentGames
             ),
             NavigationItem(
                 title = stringResource(R.string.publishers),
-                route = Routes.BestGamesOfTheYear,
-                icon = Icons.AutoMirrored.Filled.Send,
+                route = Routes.BestGamesOfTheYear
             ),
         ),
         drawerState = rememberDrawerState(initialValue = DrawerValue.Open),
