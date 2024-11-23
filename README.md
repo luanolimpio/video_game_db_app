@@ -9,8 +9,8 @@ All Games  | Search | Genres
 ![](https://github.com/luanolimpio/video_game_db_app/blob/main/assets/preview/all_games.gif?raw=true) | ![](https://github.com/luanolimpio/video_game_db_app/blob/main/assets/preview/search.gif?raw=true) | ![](https://github.com/luanolimpio/video_game_db_app/blob/main/assets/preview/genres.gif?raw=true)
 
 ## ✨ Features
- - Display list of All Games, New Releases and Best of the year.
- - Display list of Platforms, Genres and Publishers.
+ - Display lists of all games, new releases, and the best of the year.
+ - Display lists of platforms, genres, and publishers along with their respective games.
  - Search through millions of games.
  - View detailed information about each game.
 
