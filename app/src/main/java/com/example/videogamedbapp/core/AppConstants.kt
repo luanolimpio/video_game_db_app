@@ -1,4 +1,4 @@
-package com.example.videogamedbapp.core.constants
+package com.example.videogamedbapp.core
 
 object AppConstants {
     const val API_KEY = "ff6cb48b77014a2fa88158963554e020"

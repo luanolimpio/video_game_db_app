@@ -4,7 +4,7 @@ import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.videogamedbapp.core.Resource
-import com.example.videogamedbapp.core.constants.AppConstants
+import com.example.videogamedbapp.core.AppConstants
 import com.example.videogamedbapp.domain.usecases.GetGameDetailUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow

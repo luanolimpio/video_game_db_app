@@ -6,7 +6,7 @@ import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import androidx.paging.map
 import com.example.videogamedbapp.core.Resource
-import com.example.videogamedbapp.core.constants.AppConstants
+import com.example.videogamedbapp.core.AppConstants
 import com.example.videogamedbapp.core.enums.CategoryTypeEnum
 import com.example.videogamedbapp.data.remote.RAWGApiService
 import com.example.videogamedbapp.data.remote.mappers.toCategory

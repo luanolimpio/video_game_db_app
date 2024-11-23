@@ -1,6 +1,6 @@
 package com.example.videogamedbapp.data.remote
 
-import com.example.videogamedbapp.core.constants.AppConstants
+import com.example.videogamedbapp.core.AppConstants
 import com.example.videogamedbapp.data.remote.dtos.GameDetailsDto
 import com.example.videogamedbapp.data.remote.dtos.GameDto
 import com.example.videogamedbapp.data.remote.dtos.PageDataDto

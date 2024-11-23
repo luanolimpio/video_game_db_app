@@ -1,6 +1,6 @@
 package com.example.videogamedbapp.di
 
-import com.example.videogamedbapp.core.constants.AppConstants
+import com.example.videogamedbapp.core.AppConstants
 import com.example.videogamedbapp.data.remote.RAWGApiService
 import dagger.Module
 import dagger.Provides

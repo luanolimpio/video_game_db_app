@@ -1,6 +1,6 @@
 package com.example.videogamedbapp.core.enums
 
-import com.example.videogamedbapp.core.constants.AppConstants
+import com.example.videogamedbapp.core.AppConstants
 
 enum class CategoryTypeEnum(val value: String) {
     PLATFORMS(AppConstants.PLATFORMS_ENDPOINT),

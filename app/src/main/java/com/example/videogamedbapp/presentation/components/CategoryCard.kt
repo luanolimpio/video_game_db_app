@@ -32,6 +32,7 @@ import androidx.compose.ui.unit.dp
 import coil.compose.SubcomposeAsyncImage
 import coil.request.ImageRequest
 import com.example.videogamedbapp.R
+import com.example.videogamedbapp.core.extensions.toFormat
 import com.example.videogamedbapp.domain.models.Category
 import com.example.videogamedbapp.ui.theme.Shapes
 
@@ -95,7 +96,7 @@ fun CategoryCard(
                 )
 
                 Text(
-                    text = "${stringResource(R.string.popular_items)}: ${category.gamesCount}",
+                    text = "${stringResource(R.string.popular_items)}: ${category.gamesCount.toFormat}",
                     color = Color.White,
                     maxLines = 1,
                     overflow = TextOverflow.Ellipsis,

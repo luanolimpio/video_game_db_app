@@ -2,7 +2,7 @@ package com.example.videogamedbapp.data.remote.sources
 
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
-import com.example.videogamedbapp.core.constants.AppConstants
+import com.example.videogamedbapp.core.AppConstants
 import com.example.videogamedbapp.data.remote.RAWGApiService
 import com.example.videogamedbapp.data.remote.dtos.GameDto
 

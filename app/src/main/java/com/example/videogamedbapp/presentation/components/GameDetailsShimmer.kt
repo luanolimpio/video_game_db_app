@@ -18,6 +18,7 @@ import com.example.videogamedbapp.ui.theme.Shapes
 
 @Composable
 fun GameDetailsShimmer() {
+    val color = if (isSystemInDarkTheme()) Color.Gray else Color.LightGray
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -26,26 +27,26 @@ fun GameDetailsShimmer() {
             modifier = Modifier
                 .fillMaxWidth()
                 .height(256.dp)
-                .background(if (isSystemInDarkTheme()) Color.Gray else Color.LightGray)
+                .background(color)
         )
         Column(
             modifier = Modifier.padding(8.dp),
             verticalArrangement = Arrangement.spacedBy(4.dp)
         ) {
-            for (i in 1..3){
+            for (i in 1..3) {
                 ShimmerEffect(
                     modifier = Modifier
                         .width(150.dp)
                         .height(20.dp)
                         .clip(Shapes.small)
-                        .background(if (isSystemInDarkTheme()) Color.Gray else Color.LightGray)
+                        .background(color)
                 )
                 ShimmerEffect(
                     modifier = Modifier
                         .fillMaxWidth()
                         .height(128.dp)
                         .clip(Shapes.small)
-                        .background(Color.LightGray)
+                        .background(color)
                 )
             }
         }
