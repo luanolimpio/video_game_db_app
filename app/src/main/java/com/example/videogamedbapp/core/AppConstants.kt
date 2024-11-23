@@ -1,7 +1,9 @@
 package com.example.videogamedbapp.core
 
+import com.example.videogamedbapp.BuildConfig
+
 object AppConstants {
-    const val API_KEY = "ff6cb48b77014a2fa88158963554e020"
+    const val API_KEY = BuildConfig.API_KEY
     const val BASE_URL = "https://api.rawg.io/api/"
     const val GAMES_ENDPOINT = "games"
     const val BEST_GAMES_OF_THE_YEAR_ENDPOINT = "games/lists/greatest"
