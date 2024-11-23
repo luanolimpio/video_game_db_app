@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Video Game DB App</string>
+    <string name="app_name">Video Game DB</string>
     <string name="games">Games</string>
     <string name="all_games">All Games</string>
     <string name="new_releases">New Releases</string>
