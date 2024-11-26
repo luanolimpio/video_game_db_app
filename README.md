@@ -32,7 +32,7 @@ All Games  | Search | Genres
 
 To run this app, you'll need to have Android Studio installed. Follow these steps to get started:
 
- - Clone this repository: git clone https://github.com/luanolimpio/news_app.git
+ - Clone this repository: git clone https://github.com/luanolimpio/video_game_db_app.git
  - Open the project in Android Studio.
  - Get an API key from https://rawg.io/
  - Define constant variable named API_Key in local.properties
